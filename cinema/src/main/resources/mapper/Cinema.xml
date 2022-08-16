@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.CinemaMapper">
+	<insert id="addCinema" parameterType="Cinema">
+		insert into cinema (cname,caddress) values(#{cName},#{cAddress})
+	</insert>
+	<delete id="delCinema" parameterType="Integer">
+		delete from cinema where cId = #{cId}
+	</delete>
+	<update id="updateCinema" parameterType="Cinema">
+		update cinema set cname= #{cName},caddress= #{cAddress} where cId= #{cId}
+	</update>
+	<select id="queryAllCinema" resultType="Cinema">
+		select * from cinema
+	</select>
+	<select id="queryCinemaById" parameterType="Integer" resultType="Cinema">
+		select * from cinema where cId = #{cId}
+	</select>
+	<select id="queryCinemaByCinemaName" parameterType="String" resultType="Cinema">
+		select * from cinema where cName like '%#{cName}%'
+	</select>
+	<select id="queryCinemaByCinemaAddress" parameterType="String" resultType="Cinema">
+		select * from cinema where cAddress like '%#{cAddress}%'
+	</select>
+	<select id="queryCinemaByCinemaNameAndCinemaAddress" parameterMap="Map" resultType="Cinema">
+		select * from cinema where cName like '%#{cName}%' and cAddress like '%#{cAddress}%'
+	</select>
+	<select id="queryCinema" parameterType="Cinema" resultType="Cinema">
+		select * from cinema where cName= #{cName} and cAddress= #{cAddress}
+	</select>
+</mapper>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.MovieMapper">
+	<insert id="addMovie" parameterType="Movie">
+		insert into movie (mName,mlanguage,mlocality,mPicaddress,mDetail,mDuration,mType,mGrade) 
+		values(#{mName},#{mlanguage},#{mlocality},#{mPicaddress},#{mDetail},#{mDuration},#{mType},#{mGrade})
+	</insert>
+	<delete id="delMovie" parameterType="Integer">
+		delete from movie where mId = #{mId}
+	</delete>
+	<update id="updateMovie" parameterType="Movie">
+		update movie set mName = #{mName}, mlanguage = #{mlanguage}, mlocality = #{mlocality},
+		mPicaddress = #{mPicaddress}, mDetail = #{mDetail}, mDuration = #{mDuration},
+		mType = #{mType}, mGrade = #{mGrade} where mId = #{mId}
+	</update>
+	<select id="queryAllMovie" resultType="Movie">
+		select * from movie
+	</select>
+	<select id="queryMovieById" parameterType="Integer" resultType="Movie">
+		select * from movie where mId = #{mId}
+	</select>
+	<select id="OrderMovieTen" resultType="Movie">
+		select * from movie order by mGrade desc limit 10
+	</select>
+	<select id="queryMovieByType" parameterType="String" resultType="Movie">
+		select * from movie where mType = #{mType}
+	</select>
+	<select id="queryMovieByMovieName" parameterType="String" resultType="Movie">
+		select * from movie where mName like '%#{mName}%'
+	</select>
+	<select id="queryMovie" parameterType="Movie" resultType="Movie">
+		select * from movie where mName = #{mName} and mlanguage = #{mlanguage} 
+		and mlocality = #{mlocality} and mPicaddress = #{mPicaddress} 
+		and mDetail = #{mDetail} and mDuration = #{mDuration} 
+		and mType = #{mType} and mGrade = #{mGrade}
+	</select>
+	<select id="queryMovieByTypeandName" parameterMap="Map" resultType="Movie">
+		select * from movie where mType ='%#{cName}%' and mName like '%#{cName}%'
+	</select>
+	<select id="queryMovieByName" parameterType="String" resultType="Movie">
+		select * from movie where mName = #{mName}
+	</select>
+</mapper>
