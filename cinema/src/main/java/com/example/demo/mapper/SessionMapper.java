@@ -8,9 +8,9 @@ import com.example.demo.entity.Session;
 
 @Mapper
 public interface SessionMapper {
-	public boolean addSession(Session session );
-	public boolean delSession(int sId);
-	public boolean updateSession(Session session);
+	public int addSession(Session session);
+	public int delSession(int sId);
+	public int updateSession(Session session);
 	public List<Session> queryAllSession();
 	public Session querySessionById(int sId);
 	public List<Session> querySessionByMid(int mId);

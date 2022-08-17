@@ -18,5 +18,5 @@ public class Movie implements Serializable{
 	private String mDetail;//详情
 	private int mDuration;// 时长
 	private String mType;// 类型
-    private double mGrade;//评分
+	private double mGrade;//评分
 }

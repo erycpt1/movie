@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class User implements Serializable{
 	private int uId;
     private String uName;
-    private String uPass;
+    private String uPwd;
     private double balance;
     private int uType;
 }

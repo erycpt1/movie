@@ -22,7 +22,7 @@
 	<select id="queryCinemaByCinemaAddress" parameterType="String" resultType="Cinema">
 		select * from cinema where cAddress like '%#{cAddress}%'
 	</select>
-	<select id="queryCinemaByCinemaNameAndCinemaAddress" parameterMap="Map" resultType="Cinema">
+	<select id="queryCinemaByCinemaNameAndCinemaAddress" parameterType="Map" resultType="Cinema">
 		select * from cinema where cName like '%#{cName}%' and cAddress like '%#{cAddress}%'
 	</select>
 	<select id="queryCinema" parameterType="Cinema" resultType="Cinema">

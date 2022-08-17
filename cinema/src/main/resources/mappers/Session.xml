@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.SessionMapper">
+	<insert id="addSession" parameterType="Session">
+		insert into session(hId,cId,mId,beginTime,price,remain) values (#{hId},#{cId},#{mId},#{beginTime},#{price},#{remain})
+	</insert>
+	<delete id="delSession" parameterType="Integer">
+		delete from session where sId = #{sId}
+	</delete>
+	<update id="updateSession" parameterType="Session">
+		update session set hId = #{hId}, cId = #{cId}, mId = #{mId}, 
+		beginTime = #{beginTime}, price = #{price}, remain = #{remain} 
+		where sId = #{sId}
+	</update>
+	<select id="queryAllSession" resultType="Session">
+		select * from Session
+	</select>
+	<select id="querySessionById" parameterType="Integer" resultType="Session">
+		select * from session where sId = #{sId}
+	</select>
+	<select id="querySessionByMid" parameterType="Integer" resultType="Session">
+		select * from session where mId = #{mId}
+	</select>
+	<select id="querySessionByHid" parameterType="Integer" resultType="Session">
+		select * from session where hId = #{hId}
+	</select>
+	<select id="querySessionByCid" parameterType="Integer" resultType="Session">
+		select * from session where cId = #{cId}
+	</select>
+	<select id="querySession" parameterType="Session" resultType="Session">
+		select * from session where hId = #{hId} and cId = #{cId} and mId = #{mId} 
+		and beginTime = #{beginTime} and price = #{price} and remain = #{remain}
+	</select>
+	<select id="querySessionBycIdandmId" parameterType="Map" resultType="Session">
+		select * from session where cId = #{cId} and mId = #{mId}
+	</select>
+</mapper>

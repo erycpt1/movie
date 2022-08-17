@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+	<insert id="addUser" parameterType="User">
+		insert into user_ (uName,uPwd,balance,uType) values(#{uName},#{uPwd},#{balance},#{uType})
+	</insert>
+	<delete id="delUser" parameterType="Integer">
+		delete from user_  where uId = #{uId}
+	</delete>
+	<update id="updateUser" parameterType="User">
+		update user_ set uName = #{uName}, uPwd = #{uPwd}, 
+		balance = #{balance}, uType = #{uType} where uId = #{uId}
+	</update>
+	<update id="updateUserPwd" parameterType="Map">
+		update user_ set uPwd = #{uPwd} where uName = #{uName}
+	</update>
+	<select id="queryUser" resultType="User">
+		select * from user_ where uName = #{uName} and uPwd = #{uPwd} and uType = #{uType}
+	</select>
+	<select id="queryUserByName" parameterType="String" resultType="User">
+		select uId from user_ where uName = #{uName}
+	</select>
+	<select id="queryUserByid" parameterType="Integer" resultType="User">
+		select * from user_ where uId = #{uId}
+	</select>
+</mapper>

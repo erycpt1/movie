@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.TicketMapper">
+	<insert id="addTicket" parameterType="Ticket">
+		insert into ticket (uId,sId,seat) values(#{uId},#{sId},#{seat})
+	</insert>
+	<delete id="delTicket" parameterType="Integer">
+		delete from ticket where tId = #{tId}
+	</delete>
+	<select id="queryAllTicket" resultType="Ticket">
+		select * from ticket
+	</select>
+	<select id="queryAllTicketsId" parameterType="Integer" resultType="Ticket">
+		select * from ticket where sId = #{sId}
+	</select>
+	<select id="queryAllTicketuId" parameterType="Integer" resultType="Ticket">
+		select * from ticket where uId = #{uId}
+	</select>
+</mapper>
